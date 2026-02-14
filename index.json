@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-02-14T14:46:33Z",
+  "updated_at": "2026-02-14T20:09:06Z",
   "registry": {
     "name": "Nexus Community",
     "description": "Official community registry for Nexus plugins and extensions",
@@ -27,7 +27,48 @@
       "name": "Cookie Jar",
       "status": "active",
       "version": "0.4.3"
+    },
+    {
+      "id": "com.nexus.zenoh-viewer",
+      "name": "Zenoh Viewer",
+      "version": "0.1.0",
+      "description": "Browse and subscribe to Zenoh topics through the generic zenoh extension",
+      "author": "imdanibytes",
+      "author_url": "https://github.com/imdanibytes",
+      "license": "MIT",
+      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-zenoh-viewer:0.1.0",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/plugin/plugin.json",
+      "manifest_sha256": "feb9b5a0ff4fd1500951593951d1569657ba89a5742a23891fc6643bfb37f153",
+      "categories": [
+        "developer-tools",
+        "networking"
+      ],
+      "image_digest": "sha256:3f9ef11fa538b481ae791c0ea9ab68af5bcc4c624fab6eb80753b8f13553ec56",
+      "status": "active"
     }
   ],
-  "extensions": []
+  "extensions": [
+    {
+      "id": "zenoh",
+      "name": "Zenoh",
+      "version": "0.1.0",
+      "description": "Generic Zenoh middleware — discover topics, subscribe, and poll samples over IPC",
+      "author": "imdanibytes",
+      "author_url": "https://github.com/imdanibytes",
+      "license": "MIT",
+      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
+      "author_public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0=",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/extension/manifest.json",
+      "manifest_sha256": "52552c621ad3f0f93c098c1145a4608c9c79129f5c16335c888df4523a8cac58",
+      "categories": [
+        "middleware",
+        "networking"
+      ],
+      "platforms": [
+        "macos"
+      ],
+      "status": "active"
+    }
+  ]
 }
