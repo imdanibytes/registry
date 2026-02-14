@@ -76,32 +76,23 @@ jobs:
             exit 1
           fi
 
-      - name: Verify manifest URLs and content hashes
+      - name: Verify manifest URLs are reachable
         run: |
           FAILED=0
           for f in plugins/*.yaml extensions/*.yaml; do
             [ -f "$f" ] || continue
             [[ "$f" == *".gitkeep"* ]] && continue
             URL=$(python3 -c "import yaml; print(yaml.safe_load(open('$f'))['manifest_url'])" 2>/dev/null) || continue
-            BODY=$(curl -sf --max-time 10 "$URL") || {
+            curl -sf --max-time 10 "$URL" > /dev/null || {
               echo "  FAIL: unreachable $URL ($f)"
               FAILED=1
               continue
             }
             echo "  OK: $URL ($f)"
-            # If manifest_sha256 is present, verify it matches
-            EXPECTED=$(python3 -c "import yaml; d=yaml.safe_load(open('$f')); print(d.get('manifest_sha256',''))" 2>/dev/null)
-            if [[ -n "$EXPECTED" ]]; then
-              ACTUAL=$(echo -n "$BODY" | shasum -a 256 | cut -d' ' -f1)
-              if [[ "$ACTUAL" == "$EXPECTED" ]]; then
-                echo "    Hash OK: $ACTUAL"
-              else
-                echo "    Hash MISMATCH: expected $EXPECTED, got $ACTUAL ($f)"
-                FAILED=1
-              fi
-            fi
           done
           if [[ "$FAILED" == "1" ]]; then
-            echo "Manifest verification failed"
+            echo "Manifest URL verification failed"
             exit 1
           fi
+          # Note: manifest_sha256 is verified client-side by Nexus at install time.
+          # CDN caching makes hash verification unreliable during CI.
