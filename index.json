@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-02-14T12:12:26Z",
+  "updated_at": "2026-02-14T12:18:27Z",
   "registry": {
     "name": "Nexus Community",
     "description": "Official community registry for Nexus plugins and extensions",
@@ -22,7 +22,7 @@
       "image": "ghcr.io/imdanibytes/nexus-plugin-cookie-jar:0.3.1",
       "image_digest": "sha256:921970edbde5356a8fdb5481f856044154de875baa5a2f080a25b773aa1d8900",
       "license": "MIT",
-      "manifest_sha256": "28e2b2441959f3492e51f7ea269db34a4cbe1774ceb4244f18d33c40edc3e4a1",
+      "manifest_sha256": "28c2fb2e9262e909777f700d1bc84cee63da5d7f4a405a8fdc99dee8604995a7",
       "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-cookie-jar/main/plugin.json",
       "name": "Cookie Jar",
       "status": "active",
