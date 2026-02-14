@@ -1,8 +1,6 @@
 name: Validate Registry
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -12,35 +10,64 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate JSON syntax
-        run: python3 -m json.tool registry.json > /dev/null
-
-      - name: Validate against schema
-        uses: cardinalby/schema-validator-action@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          file: registry.json
-          schema: schema.json
+          python-version: "3.12"
 
-      - name: Check for duplicate plugin IDs
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Validate YAML syntax
         run: |
-          DUPES=$(jq -r '.plugins[].id' registry.json | sort | uniq -d)
-          if [[ -n "$DUPES" ]]; then
-            echo "Duplicate plugin IDs found:"
-            echo "$DUPES"
-            exit 1
-          fi
-          echo "No duplicate IDs"
+          python3 -c "
+          import yaml, sys, pathlib
+          errors = []
+          for d in ['plugins', 'extensions']:
+              for f in pathlib.Path(d).glob('*.yaml'):
+                  try:
+                      yaml.safe_load(f.read_text())
+                  except yaml.YAMLError as e:
+                      errors.append(f'{f}: {e}')
+          if errors:
+              for e in errors:
+                  print(e, file=sys.stderr)
+              sys.exit(1)
+          print('All YAML files are syntactically valid')
+          "
+
+      - name: Validate against schemas
+        run: python3 scripts/build-index.py --registry-dir .
+
+      - name: Check for duplicate IDs
+        run: |
+          python3 -c "
+          import yaml, sys, pathlib
+          ids = []
+          for d in ['plugins', 'extensions']:
+              for f in sorted(pathlib.Path(d).glob('*.yaml')):
+                  data = yaml.safe_load(f.read_text())
+                  if data and 'id' in data:
+                      ids.append(data['id'])
+          dupes = [x for x in ids if ids.count(x) > 1]
+          if dupes:
+              print(f'Duplicate IDs found: {set(dupes)}', file=sys.stderr)
+              sys.exit(1)
+          print(f'No duplicate IDs ({len(ids)} packages checked)')
+          "
 
       - name: Check manifest URLs are reachable
         run: |
-          URLS=$(jq -r '.plugins[].manifest_url' registry.json)
           FAILED=0
-          for url in $URLS; do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+          for f in plugins/*.yaml extensions/*.yaml; do
+            [ -f "$f" ] || continue
+            [[ "$f" == *".gitkeep"* ]] && continue
+            URL=$(python3 -c "import yaml; print(yaml.safe_load(open('$f'))['manifest_url'])" 2>/dev/null) || continue
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$URL")
             if [[ "$STATUS" == "200" ]]; then
-              echo "  OK: $url"
+              echo "  OK: $URL ($f)"
             else
-              echo "  FAIL ($STATUS): $url"
+              echo "  FAIL ($STATUS): $URL ($f)"
               FAILED=1
             fi
           done

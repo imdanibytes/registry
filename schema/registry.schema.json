@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nexus Registry Index",
+  "description": "Schema for the compiled index.json produced by build-index.py",
+  "type": "object",
+  "required": ["version", "updated_at", "registry", "plugins", "extensions"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 2,
+      "description": "Registry schema version"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when the index was last built"
+    },
+    "registry": {
+      "type": "object",
+      "required": ["name", "description", "homepage", "maintainer"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable registry name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of the registry"
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the registry's homepage or repository"
+        },
+        "maintainer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "GitHub username or org of the registry maintainer"
+        }
+      }
+    },
+    "plugins": {
+      "type": "array",
+      "items": { "$ref": "plugin.schema.json" },
+      "description": "Array of plugin entries (excludes unlisted)"
+    },
+    "extensions": {
+      "type": "array",
+      "items": { "$ref": "extension.schema.json" },
+      "description": "Array of extension entries (excludes unlisted)"
+    }
+  }
+}

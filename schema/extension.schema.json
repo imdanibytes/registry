@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nexus Extension",
+  "description": "Schema for an individual extension YAML file in extensions/",
+  "type": "object",
+  "required": ["id", "name", "version", "description", "author", "license", "homepage", "author_public_key", "manifest_url", "categories", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9]*)*\\.[a-z][a-z0-9-]+$",
+      "description": "Reverse-domain extension ID (e.g. com.nexus.dark-theme)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable extension name"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?(\\+[a-zA-Z0-9.]+)?$",
+      "description": "Semantic version string"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Short description of what the extension does"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "GitHub username or org of the extension author"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "SPDX license identifier"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the extension's homepage or repository"
+    },
+    "author_public_key": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Public key for verifying extension signatures"
+    },
+    "manifest_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the extension's manifest file"
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["windows", "macos", "linux"]
+      },
+      "uniqueItems": true,
+      "description": "Supported platforms (omit for platform-independent extensions)"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Searchable category tags"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "deprecated", "unlisted"],
+      "description": "Package visibility status"
+    }
+  }
+}
