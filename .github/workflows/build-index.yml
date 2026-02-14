@@ -9,6 +9,7 @@ on:
       - 'registry.yaml'
       - 'scripts/build-index.py'
       - 'schema/*.json'
+  workflow_dispatch:
 
 concurrency:
   group: build-index
