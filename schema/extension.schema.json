@@ -8,8 +8,8 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9]*)*\\.[a-z][a-z0-9-]+$",
-      "description": "Reverse-domain extension ID (e.g. com.nexus.dark-theme)"
+      "pattern": "^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*)*$",
+      "description": "Extension ID — simple (e.g. zenoh) or reverse-domain (e.g. com.nexus.dark-theme)"
     },
     "name": {
       "type": "string",

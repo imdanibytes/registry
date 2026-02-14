@@ -1,0 +1,17 @@
+id: zenoh
+name: Zenoh
+version: "0.1.0"
+description: Generic Zenoh middleware — discover topics, subscribe, and poll samples over IPC
+author: imdanibytes
+author_url: https://github.com/imdanibytes
+license: MIT
+homepage: https://github.com/imdanibytes/nexus-zenoh
+author_public_key: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0=
+manifest_url: https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/extension/manifest.json
+manifest_sha256: 52552c621ad3f0f93c098c1145a4608c9c79129f5c16335c888df4523a8cac58
+categories:
+  - middleware
+  - networking
+platforms:
+  - macos
+status: active
