@@ -25,7 +25,25 @@ except ImportError:
 
 def load_yaml(path: Path) -> dict:
     with open(path) as f:
-        return yaml.safe_load(f)
+        data = yaml.safe_load(f)
+    if isinstance(data, dict):
+        _stringify_scalars(data)
+    return data
+
+
+def _stringify_scalars(d: dict) -> None:
+    """Convert non-string scalars back to strings where the schema expects strings.
+
+    PyYAML auto-parses ISO timestamps as datetime and bare versions as floats.
+    The JSON schemas declare these as type: string, so we normalize here.
+    """
+    from datetime import date, datetime
+
+    for key, value in d.items():
+        if isinstance(value, (datetime, date)):
+            d[key] = value.isoformat()
+        elif isinstance(value, float) and key in ("version",):
+            d[key] = str(value)
 
 
 def load_schema(schema_dir: Path, filename: str) -> dict:
