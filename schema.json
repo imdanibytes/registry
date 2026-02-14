@@ -40,7 +40,12 @@
           },
           "image": {
             "type": "string",
-            "description": "Docker image name (built from the plugin's Dockerfile)"
+            "description": "Docker image reference (e.g. ghcr.io/owner/plugin:version)"
+          },
+          "image_digest": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$",
+            "description": "SHA-256 digest of the Docker image for integrity verification"
           },
           "manifest_url": {
             "type": "string",
