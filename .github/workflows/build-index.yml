@@ -3,12 +3,19 @@ name: Build Index
 on:
   push:
     branches: [main]
+    paths:
+      - 'plugins/*.yaml'
+      - 'extensions/*.yaml'
+      - 'registry.yaml'
+      - 'scripts/build-index.py'
+      - 'schema/*.json'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -23,14 +30,24 @@ jobs:
       - name: Build index.json
         run: python3 scripts/build-index.py --registry-dir .
 
-      - name: Commit index.json if changed
+      - name: Create PR if index changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.json
           if git diff --cached --quiet; then
             echo "No changes to index.json"
-          else
-            git commit -m "chore: rebuild index.json"
-            git push
+            exit 0
           fi
+          BRANCH="chore/rebuild-index-$(date +%s)"
+          git checkout -b "$BRANCH"
+          git commit -m "chore: rebuild index.json"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "chore: rebuild index.json" \
+            --body "Auto-generated index rebuild triggered by package changes." \
+            --base main \
+            --head "$BRANCH"
+          gh pr merge --auto --squash --delete-branch "$BRANCH"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
