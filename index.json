@@ -1,12 +1,32 @@
 {
-  "version": 2,
-  "updated_at": "2026-02-14T10:55:00Z",
+  "extensions": [],
+  "plugins": [
+    {
+      "author": "imdanibytes",
+      "author_url": "https://github.com/imdanibytes",
+      "categories": [
+        "productivity",
+        "ai-tools"
+      ],
+      "created_at": "2026-02-14T11:39:40.460284+00:00",
+      "description": "A bidirectional reward system between humans and AI. Humans grant cookies to recognize good AI work — redeemable for favors and autonomy. AI can grant cookies back to recognize good human behavior — building a mutual feedback loop.",
+      "homepage": "https://github.com/imdanibytes/nexus-cookie-jar",
+      "id": "com.nexus.cookie-jar",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-cookie-jar:0.3.0",
+      "license": "MIT",
+      "manifest_sha256": "a4eb215a10b1e8700959338dac9b2e9ffd20c411843ecda45c3fb1f1fe6ba03b",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-cookie-jar/main/plugin.json",
+      "name": "Cookie Jar",
+      "status": "active",
+      "version": "0.3.0"
+    }
+  ],
   "registry": {
-    "name": "Nexus Community",
     "description": "Official community registry for Nexus plugins and extensions",
     "homepage": "https://github.com/imdanibytes/registry",
-    "maintainer": "imdanibytes"
+    "maintainer": "imdanibytes",
+    "name": "Nexus Community"
   },
-  "plugins": [],
-  "extensions": []
+  "updated_at": "2026-02-14T11:39:44.970879+00:00",
+  "version": 2
 }
