@@ -1,0 +1,15 @@
+id: com.nexus.cookie-jar
+name: Cookie Jar
+version: "0.1.0"
+description: >
+  A digital cookie jar for saving wins, accomplishments,
+  and motivational notes — pull a random cookie when you need a pick-me-up
+author: imdanibytes
+license: MIT
+homepage: https://github.com/imdanibytes/nexus-cookie-jar
+image: ghcr.io/imdanibytes/nexus-plugin-cookie-jar:0.1.0
+manifest_url: https://raw.githubusercontent.com/imdanibytes/nexus-cookie-jar/main/plugin.json
+categories:
+  - productivity
+  - fun
+status: active
