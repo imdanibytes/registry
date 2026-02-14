@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "updated_at": "2025-02-14T00:00:00Z",
+  "plugins": [
+    {
+      "id": "com.nexus.hello-world",
+      "name": "Hello World",
+      "version": "0.1.0",
+      "description": "A sample plugin that demonstrates Host API integration — displays system info, settings, and a live clock",
+      "image": "nexus-plugin-hello:latest",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus/main/examples/plugins/hello-world/plugin.json",
+      "categories": ["example", "developer-tools"],
+      "downloads": 0
+    },
+    {
+      "id": "com.nexus.cookie-jar",
+      "name": "Cookie Jar",
+      "version": "0.1.0",
+      "description": "A digital cookie jar for saving wins, accomplishments, and motivational notes — pull a random cookie when you need a pick-me-up",
+      "image": "nexus-plugin-cookie-jar:latest",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-cookie-jar/main/plugin.json",
+      "categories": ["productivity", "fun"],
+      "downloads": 0
+    }
+  ],
+  "extensions": []
+}

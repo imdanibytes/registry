@@ -1,0 +1,50 @@
+name: Validate Registry
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: python3 -m json.tool registry.json > /dev/null
+
+      - name: Validate against schema
+        uses: cardinalby/schema-validator-action@v3
+        with:
+          file: registry.json
+          schema: schema.json
+
+      - name: Check for duplicate plugin IDs
+        run: |
+          DUPES=$(jq -r '.plugins[].id' registry.json | sort | uniq -d)
+          if [[ -n "$DUPES" ]]; then
+            echo "Duplicate plugin IDs found:"
+            echo "$DUPES"
+            exit 1
+          fi
+          echo "No duplicate IDs"
+
+      - name: Check manifest URLs are reachable
+        run: |
+          URLS=$(jq -r '.plugins[].manifest_url' registry.json)
+          FAILED=0
+          for url in $URLS; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+            if [[ "$STATUS" == "200" ]]; then
+              echo "  OK: $url"
+            else
+              echo "  FAIL ($STATUS): $url"
+              FAILED=1
+            fi
+          done
+          if [[ "$FAILED" == "1" ]]; then
+            echo "Some manifest URLs are not reachable"
+            exit 1
+          fi
