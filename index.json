@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-02-14T20:09:06Z",
+  "updated_at": "2026-02-15T03:20:14Z",
   "registry": {
     "name": "Nexus Community",
     "description": "Official community registry for Nexus plugins and extensions",
@@ -8,6 +8,25 @@
     "maintainer": "imdanibytes"
   },
   "plugins": [
+    {
+      "id": "com.nexus.agent",
+      "name": "Nexus Agent",
+      "version": "0.1.0",
+      "description": "AI chat agent with tool calling, agent profiles, and rich UI surfaces. Connects to any Anthropic-compatible LLM endpoint.",
+      "author": "imdanibytes",
+      "author_url": "https://github.com/imdanibytes",
+      "license": "MIT",
+      "homepage": "https://github.com/imdanibytes/nexus-agent",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.1.0",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-agent/main/plugin.json",
+      "manifest_sha256": "0544a6fbd7949f9c76e736da9d41506874ff3c72b3b1340662b23ae0c352b6a9",
+      "categories": [
+        "ai-tools",
+        "productivity"
+      ],
+      "image_digest": "sha256:0fbbee55a101e07671c6598b2133ccad72a377dd72b74785416776b3087154d6",
+      "status": "active"
+    },
     {
       "author": "imdanibytes",
       "author_url": "https://github.com/imdanibytes",
