@@ -82,6 +82,39 @@ The filename **must** match the ID (e.g., `com.yourname.plugin-name.yaml`).
 
 ## Submitting a Package
 
+### Using the CLI (recommended)
+
+The `nexus-registry` CLI automates the entire submission flow — generates the YAML, validates it, creates a PR, and enables auto-merge:
+
+```bash
+# Install (from the Nexus repo)
+cd nexus/src-tauri && cargo install --path crates/nexus-registry
+
+# Add a plugin to your local registry clone
+nexus-registry add plugin \
+  --id com.yourname.my-plugin \
+  --name "My Plugin" \
+  --version 1.0.0 \
+  --author yourname \
+  --image ghcr.io/yourname/nexus-plugin-name:1.0.0 \
+  --manifest-url https://raw.githubusercontent.com/yourname/nexus-plugin-name/main/plugin.json \
+  --categories "productivity,ai-tools"
+
+# Publish to the community registry (branches, validates, pushes, opens PR)
+nexus-registry publish \
+  --registry https://github.com/imdanibytes/registry.git \
+  --package plugins/com.yourname.my-plugin.yaml
+```
+
+The `publish` command will:
+1. Clone the registry
+2. Copy your package YAML into it
+3. Run `validate` to check schemas and catch errors
+4. Create a branch, commit, and push
+5. Open a PR (requires `gh` CLI) with auto-merge enabled
+
+### Manual submission
+
 1. Create your plugin/extension repo with a manifest and Dockerfile
 2. Fork this repository
 3. Add a YAML file to `plugins/` or `extensions/` following the format above
