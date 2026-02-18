@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-02-17T21:58:11Z",
+  "updated_at": "2026-02-18T08:11:02Z",
   "registry": {
     "name": "Nexus Community",
     "description": "Official community registry for Nexus plugins and extensions",
@@ -18,14 +18,14 @@
       "description": "AI chat agent with tool calling, agent profiles, and rich UI surfaces. Connects to any Anthropic-compatible LLM endpoint.",
       "homepage": "https://github.com/imdanibytes/nexus-agent",
       "id": "com.nexus.agent",
-      "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.3.3",
-      "image_digest": "sha256:bdb4bd426ad8bd0bbb361852d5e583924c2987c8f1ea9748dfb1e8dd13cc942f",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.4.0",
+      "image_digest": "sha256:41dedec16398ea8060f77e4ca59d5ddec624c3b3d5692ab9cafc726ba5672425",
       "license": "MIT",
-      "manifest_sha256": "16e94a782e93cb9bbdb3fb253a8f2c02ae67b70cc9db52acd9e51be16a2a4a95",
+      "manifest_sha256": "a764a600efa4496f69a9433a2d28a6421e5e3db08fbec15e2aeacb80eead09b6",
       "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-agent/main/plugin.json",
       "name": "Nexus Agent",
       "status": "active",
-      "version": "0.3.3"
+      "version": "0.4.0"
     },
     {
       "author": "imdanibytes",
@@ -48,46 +48,46 @@
       "version": "0.8.0"
     },
     {
-      "id": "com.nexus.zenoh-viewer",
-      "name": "Zenoh Viewer",
-      "version": "0.1.0",
-      "description": "Browse and subscribe to Zenoh topics through the generic zenoh extension",
       "author": "imdanibytes",
       "author_url": "https://github.com/imdanibytes",
-      "license": "MIT",
-      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
-      "image": "ghcr.io/imdanibytes/nexus-plugin-zenoh-viewer:0.1.0",
-      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/plugin/plugin.json",
-      "manifest_sha256": "feb9b5a0ff4fd1500951593951d1569657ba89a5742a23891fc6643bfb37f153",
       "categories": [
         "developer-tools",
         "networking"
       ],
-      "image_digest": "sha256:3f9ef11fa538b481ae791c0ea9ab68af5bcc4c624fab6eb80753b8f13553ec56",
-      "status": "active"
+      "description": "Browse and subscribe to Zenoh topics through the generic zenoh extension",
+      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
+      "id": "com.nexus.zenoh-viewer",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-zenoh-viewer:0.1.1",
+      "image_digest": "sha256:532d5984eaa645acb2390a5bb691b645def571c13a4c9d1e0c9d1d2ade0f7be5",
+      "license": "MIT",
+      "manifest_sha256": "feb9b5a0ff4fd1500951593951d1569657ba89a5742a23891fc6643bfb37f153",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/plugin/plugin.json",
+      "name": "Zenoh Viewer",
+      "status": "active",
+      "version": "0.1.1"
     }
   ],
   "extensions": [
     {
-      "id": "zenoh",
-      "name": "Zenoh",
-      "version": "0.1.0",
-      "description": "Generic Zenoh middleware — discover topics, subscribe, and poll samples over IPC",
       "author": "imdanibytes",
-      "author_url": "https://github.com/imdanibytes",
-      "license": "MIT",
-      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
       "author_public_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0=",
-      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/extension/manifest.json",
-      "manifest_sha256": "52552c621ad3f0f93c098c1145a4608c9c79129f5c16335c888df4523a8cac58",
+      "author_url": "https://github.com/imdanibytes",
       "categories": [
         "middleware",
         "networking"
       ],
+      "description": "Generic Zenoh middleware — discover topics, subscribe, and poll samples over IPC",
+      "homepage": "https://github.com/imdanibytes/nexus-zenoh",
+      "id": "zenoh",
+      "license": "MIT",
+      "manifest_sha256": "90543936f6f34625c073aa7bb24016cb2a71975ff40cbf7a0fa5058e7135fc13",
+      "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-zenoh/main/extension/manifest.json",
+      "name": "Zenoh",
       "platforms": [
         "macos"
       ],
-      "status": "active"
+      "status": "active",
+      "version": "0.1.1"
     }
   ]
 }
