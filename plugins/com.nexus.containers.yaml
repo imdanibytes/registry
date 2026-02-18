@@ -1,0 +1,16 @@
+author: imdanibytes
+author_url: https://github.com/imdanibytes
+categories:
+- utilities
+- developer-tools
+description: Docker Desktop-style container management. Browse containers, images, volumes, and networks. View logs, inspect details, start/stop/restart/remove resources.
+homepage: https://github.com/imdanibytes/nexus-containers
+id: com.nexus.containers
+image: ghcr.io/imdanibytes/nexus-plugin-containers:0.1.0
+image_digest: sha256:74e85d06c1e36156713857234c93142aca9a86fc55a7f51f955a9d2bf51f173b
+license: MIT
+manifest_sha256: b8f85f7f61cc649bad5e0f2e8493db2193733d00cf35bdaebcdba48426f71079
+manifest_url: https://raw.githubusercontent.com/imdanibytes/nexus-containers/main/plugin.json
+name: Containers
+status: active
+version: 0.1.0
