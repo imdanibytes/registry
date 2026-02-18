@@ -9,7 +9,7 @@ id: com.nexus.agent
 image: ghcr.io/imdanibytes/nexus-plugin-agent:0.4.1
 image_digest: sha256:d7260cb2b935a7e35841126acf3963ec5dbdbf1d8f55e57163d39671aaa46b8c
 license: MIT
-manifest_sha256: a764a600efa4496f69a9433a2d28a6421e5e3db08fbec15e2aeacb80eead09b6
+manifest_sha256: bb40ab9245a265390136a400b10b6b43d599de1e1453f656cf737356f0fb3024
 manifest_url: https://raw.githubusercontent.com/imdanibytes/nexus-agent/main/plugin.json
 name: Nexus Agent
 status: active
