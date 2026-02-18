@@ -19,7 +19,7 @@
       "homepage": "https://github.com/imdanibytes/nexus-agent",
       "id": "com.nexus.agent",
       "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.4.2",
-      "image_digest": "sha256:d7260cb2b935a7e35841126acf3963ec5dbdbf1d8f55e57163d39671aaa46b8c",
+      "image_digest": "sha256:0ea36c6b0eff317486c39d0ae1a6981a8f23af2d7d88778220cedb06d2a5230f",
       "license": "MIT",
       "manifest_sha256": "bf9cb69161e59c74ee07207183fcad613e9708fbdd780f8c9fa214848cebd10e",
       "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-agent/main/plugin.json",
