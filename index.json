@@ -18,14 +18,14 @@
       "description": "AI chat agent with tool calling, agent profiles, and rich UI surfaces. Connects to any Anthropic-compatible LLM endpoint.",
       "homepage": "https://github.com/imdanibytes/nexus-agent",
       "id": "com.nexus.agent",
-      "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.4.1",
+      "image": "ghcr.io/imdanibytes/nexus-plugin-agent:0.4.2",
       "image_digest": "sha256:d7260cb2b935a7e35841126acf3963ec5dbdbf1d8f55e57163d39671aaa46b8c",
       "license": "MIT",
-      "manifest_sha256": "bb40ab9245a265390136a400b10b6b43d599de1e1453f656cf737356f0fb3024",
+      "manifest_sha256": "bf9cb69161e59c74ee07207183fcad613e9708fbdd780f8c9fa214848cebd10e",
       "manifest_url": "https://raw.githubusercontent.com/imdanibytes/nexus-agent/main/plugin.json",
       "name": "Nexus Agent",
       "status": "active",
-      "version": "0.4.1"
+      "version": "0.4.2"
     },
     {
       "author": "imdanibytes",
